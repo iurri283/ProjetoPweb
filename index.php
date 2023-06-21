@@ -25,13 +25,13 @@
 
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="">
+            <form action="dados.php" method="POST">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="email" required>
-                    <label>Email</label>
+                    <input type="text" name="cpf" required maxlength="15" OnKeyPress="formatar('###.###.###-##',this)">
+                    <label>CPF</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
@@ -56,6 +56,20 @@
         <div class="form-box registrar">
             <h2>Registro</h2>
             <form action="">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>Nome</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>Nome</label>
+                </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
@@ -90,7 +104,7 @@
         </div>
     </div>
 
-
+    <script src="./scripts/mascaraCPF.js"></script>
     <script src="./scripts/login-registrar.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
