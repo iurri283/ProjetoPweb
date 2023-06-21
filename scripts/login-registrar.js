@@ -8,7 +8,7 @@ linkRegistrar.addEventListener('click', ()=> {
     wrapper.classList.add('ativado');
 });
 
-linkLogin.addEventListener('click', ()=>{
+linkLogin.addEventListener('click', ()=> {
     wrapper.classList.remove('ativado');
 });
 

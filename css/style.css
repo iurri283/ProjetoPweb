@@ -15,19 +15,19 @@ body{
     background: url('../imgs/background.jpg') no-repeat; 
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 header{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     padding: 10px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background: rgb(0,212,255);
     background: radial-gradient(circle, rgba(0,212,255,0.3) 55%, rgba(38,147,69,0.3) 77%);
 }
 
@@ -103,11 +103,13 @@ header{
 }
 
 .wrapper.popup-ativado{
-    transform: scale(1);  
+    transform: scale(1);
 }
 
 .wrapper.ativado{
-    height: 520px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    height: 1100px;
 }
 
 .wrapper .form-box{
