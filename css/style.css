@@ -28,7 +28,9 @@ header{
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background: radial-gradient(circle, rgba(0,212,255,0.3) 55%, rgba(38,147,69,0.3) 77%);
+    /* background: radial-gradient(circle, rgba(0,212,255,0.3) 55%, rgba(38,147,69,0.3) 77%); */
+    backdrop-filter: blur(15px);
+    border-bottom: solid 1px #162938;
 }
 
 .logo{

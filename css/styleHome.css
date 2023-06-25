@@ -1,0 +1,43 @@
+:root {
+    --corTextos: #343838;
+    --corSecundaria: #005f6b;
+    --corPrimaria: #008c9e;
+    --corTerciaria: #00b4cc;
+    --corQuartenaria: #00dffc;
+}
+
+.sideMenu hr{
+    width: 90%;
+    opacity: .9;
+    border-top: 3px solid white;
+}
+
+.sideMenu{
+    background-color: var(--corPrimaria);
+}
+
+.sideMenu i, span{
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: var(--corSecundaria);
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+.dropdown-item{
+    font-weight: 500;
+    color: white;
+}
+
+.dropdown-item:hover{
+    background-color: var(--corPrimaria);
+    color: white;
+}
+
+.dropdown-menu hr{
+    width: 100%;
+    opacity: .9;
+    border-top: 2px solid white;
+}

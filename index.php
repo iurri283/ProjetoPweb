@@ -60,70 +60,70 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
-                    <label>Nome</label>
+                    <input type="text" name="nomeCompleto" required>
+                    <label>Nome Completo</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="cpf" required>
                     <label>CPF</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="dataNascimento" required>
                     <label>Data Nascimento</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="cidade" required>
                     <label>Cidade</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="text" name="bairro" required>
                     <label>Bairro</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="text" name="rua" required>
                     <label>Rua</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="text" name="numero" required>
                     <label>Número</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="text" name="complemento">
                     <label>Complemento</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" name="senha" required>
                     <label>Senha</label>
                 </div>
                 <div class="lembrar-esquecer">
