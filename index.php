@@ -74,7 +74,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" name="dataNascimento" required required maxlength="10" OnKeyPress="formatar('##/##/####',this)">
+                    <input type="text" name="dataNascimento" required required maxlength="10" OnKeyPress="formatar('####-##-##',this)">
                     <label>Data Nascimento</label>
                 </div>
                 <div class="input-box">

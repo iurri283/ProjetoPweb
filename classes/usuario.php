@@ -15,7 +15,7 @@
 
         public $connect;
 
-        public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento): string
+        public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento)
         {
             $this->nome = $nome;
             $this->cpf = $cpf;
@@ -30,7 +30,8 @@
 
             $conn = new Conn();
 
-            $query = "INSERT INTO Usuario(nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario) VALUES ('".$this->nome."', '".$this->cpf."', '".$this->dataNasc."', '".$this->senha."', '".$this->email."', '".$this->cidade."', '".$this->bairro."', '".$this->rua."', '".$this->numero."', '".$this->complemento."')";
+            $query = "INSERT INTO Usuario(nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario)
+            VALUES ('".$this->nome."', '".$this->cpf."', '".$this->dataNasc."', '".$this->senha."', '".$this->email."', '".$this->cidade."', '".$this->bairro."', '".$this->rua."', '".$this->numero."', '".$this->complemento."')";
             
             $result = $conn->conectar()->prepare($query);
             $result->execute();
