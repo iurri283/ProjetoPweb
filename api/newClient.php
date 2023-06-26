@@ -14,8 +14,6 @@ $numero = $_POST['numero'];
 $complemento = $_POST['complemento'];
 
 $usu = new Usuario();
-$result = $usu->cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento);
-
-echo $result;
+$usu->cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento);
 
 ?>

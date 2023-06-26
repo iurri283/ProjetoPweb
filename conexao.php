@@ -3,7 +3,7 @@
         public $host = "localhost";
         public $user = "root";
         public $pass = "";
-        public $dbname = "cefetMoney";
+        public $dbname = "cefetmoney";
 
         public function conectar(){
             try
