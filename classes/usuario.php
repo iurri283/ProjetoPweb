@@ -13,8 +13,6 @@
         public int $numero;
         public string $complemento;
 
-        public $connect;
-
         public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento)
         {
             $this->nome = $nome;
@@ -30,22 +28,23 @@
 
             $conn = new Conn();
 
-            $query = "INSERT INTO Usuario(nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario)
-            VALUES ('".$this->nome."', '".$this->cpf."', '".$this->dataNasc."', '".$this->senha."', '".$this->email."', '".$this->cidade."', '".$this->bairro."', '".$this->rua."', '".$this->numero."', '".$this->complemento."')";
+            $query = "INSERT INTO Usuario(nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario) VALUES ('".$this->nome."', '".$this->cpf."', '".$this->dataNasc."', '".$this->senha."', '".$this->email."', '".$this->cidade."', '".$this->bairro."', '".$this->rua."', '".$this->numero."', '".$this->complemento."')";
             
             $result = $conn->conectar()->prepare($query);
             $result->execute();
         }
 
-        public function listar()
+        public function login($cpf, $senha)
         {
-            $conn = new Conn();
-            $this->connect =$conn->conectar();
+            $this->cpf = $cpf;
+            $this->senha = $senha;
 
-            $queryUsuarios = "SELECT id, nome, email FROM Usuario ORDER BY id DESC LIMIT 40";
-            $resultUsuarios = $this->connect->prepare($queryUsuarios);
-            $resultUsuarios->execute();
-            return $resultUsuarios->fetchALL();
+            $conn = new Conn();
+
+            $query = "SELECT * FROM Usuarios WHERE cpfUsuario=".$this->cpf." AND senhaUsuario=".$this->senha."";
+
+            $result = $conn->conectar()->prepare($query);
+            $result->execute();
         }
     }
 ?>
