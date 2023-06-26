@@ -67,14 +67,14 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" name="cpf" required required maxlength="15" OnKeyPress="formatar('###.###.###-##',this)">
+                    <input type="text" name="cpf" required required maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
                     <label>CPF</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" name="dataNascimento" required required maxlength="10" OnKeyPress="formatar('####-##-##',this)">
+                    <input type="text" name="dataNascimento" required required maxlength="10" OnKeyPress="formatar('##/##/####',this)">
                     <label>Data Nascimento</label>
                 </div>
                 <div class="input-box">

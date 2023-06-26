@@ -37,10 +37,10 @@
             $result->execute();
         }
 
-        public function listar()
+        public function login()
         {
             $conn = new Conn();
-            $this->connect =$conn->conectar();
+            $this->connect = $conn->conectar();
 
             $queryUsuarios = "SELECT id, nome, email FROM Usuario ORDER BY id DESC LIMIT 40";
             $resultUsuarios = $this->connect->prepare($queryUsuarios);
