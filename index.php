@@ -55,7 +55,7 @@
 
         <div class="form-box registrar">
             <h2>Registro</h2>
-            <form action="../api/newCliente.php" method="POST">
+            <form action="./api/newClient.php" method="POST">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
