@@ -16,7 +16,6 @@
         <div class="row flex-nowrap">
             <?php
                 require('./components/sideMenu.php');
-                // include './components/sideMenu.php';
             ?>    
             <div class="col py-3">
                 <h3>Left Sidebar with Submenus</h3>
