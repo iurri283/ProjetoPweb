@@ -54,6 +54,7 @@
                 $stmt->bindParam(':complemento', $this->complemento);
 
                 if ($stmt->execute()) {
+                    $this->gerarConta($cpf);
                     echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href = '../index.php';</script>";
                 } else {
                     echo "<script>alert('Erro ao cadastrar usuário!'); window.location.href = '../index.php';</script>";
@@ -96,20 +97,27 @@
             
         }
 
-        public function gerarConta()
+        public function gerarConta($cpf)
         {
+            $this->cpf = $cpf;
+
             $conn = new Conn();
             $pdo = $conn->conectar();
 
-            $sql = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
+            $sql = "SELECT idUsuario FROM Usuario WHERE cpfUsuario = :cpf";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':cpf', $this->cpf);
             $stmt->execute();
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch();
-                
                 $id = $user["idUsuario"];
+                $agConta = "0407";
+
+                // Gerar número de conta único
+                $numeroConta = $this->gerarNumeroContaUnico($pdo);
+
+                $saldoConta = 0.0;
 
                 $sqlGerarConta = "INSERT INTO Conta (agConta, numeroConta, saldoConta, Usuario_Conta_idUsuario) VALUES (:agConta, :numeroConta, :saldoConta, :idUsuario)";
                 $stmtGerarConta = $pdo->prepare($sqlGerarConta);
@@ -120,8 +128,34 @@
                 $stmtGerarConta->execute();
             } else {
                 // Autenticação falhou
-                echo "<script>alert('Usuário inválido!'); window.location.href = '../index.php';</script>";
+                echo "<script>alert('Usuário inexistente!'); window.location.href = '../index.php';</script>";
             }
         }
+
+        private function gerarNumeroContaUnico($pdo)
+        {
+            $numeroExistente = true;
+            $numeroConta = '';
+
+            while ($numeroExistente) {
+                $n1 = random_int(1, 99999999);
+                $n2 = random_int(1, 9);
+                $numeroConta = $n1 . "-" . $n2;
+
+                $sqlVerificarConta = "SELECT COUNT(*) FROM Conta WHERE numeroConta = :numeroConta";
+                $stmtVerificarConta = $pdo->prepare($sqlVerificarConta);
+                $stmtVerificarConta->bindParam(':numeroConta', $numeroConta);
+                $stmtVerificarConta->execute();
+
+                $count = $stmtVerificarConta->fetchColumn();
+
+                if ($count === 0) {
+                    $numeroExistente = false;
+                }
+            }
+
+            return $numeroConta;
+        }
+
     }
 ?>
