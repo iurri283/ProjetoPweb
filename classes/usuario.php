@@ -69,25 +69,29 @@
             $conn = new Conn();
             $pdo = $conn->conectar();
 
-            $query = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf AND senhaUsuario = :senha";
+            $query = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':cpf', $this->cpf);
-            $stmt->bindParam(':senha', $this->senha);
             $stmt->execute();
 
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user) 
-            {
-                // Autenticação bem-sucedida
-                session_start();
-                $_SESSION['cpf'] = $user['cpfUsuario'];
-                // Redirecionar para página de sucesso ou página restrita
-                header("Location: ../home.php");
-                exit();
-            } else 
-            {
+            if ($stmt->rowCount() === 1) {
+                $user = $stmt->fetch();
+                
+                // Verifique a senha usando password_verify()
+                if (password_verify($this->senha, $user['senhaUsuario'])) {
+                    // Autenticação bem-sucedida
+                    session_start();
+                    $_SESSION['cpf'] = $user['cpfUsuario'];
+                    // Redirecionar para página de sucesso ou página restrita
+                    header("Location: ../home.php");
+                    exit();
+                } else {
+                    // Senha incorreta
+                    echo "<script>alert('Senha inválida!'); window.location.href = '../index.php';</script>";
+                }
+            } else {
                 // Autenticação falhou
-                echo "<script>alert('Usuário ou senha inválidos!'); window.location.href = '../index.php';</script>";
+                echo "<script>alert('Usuário inválido!'); window.location.href = '../index.php';</script>";
             }
             
         }

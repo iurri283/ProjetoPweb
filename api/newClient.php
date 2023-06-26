@@ -17,5 +17,4 @@ $complemento = $_POST['complemento'];
 $usu = new Usuario();
 $usu->cadastrar($nome, $cpf, $dataFormatada, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento);
 
-header('Location: ../index.php');
 ?>
