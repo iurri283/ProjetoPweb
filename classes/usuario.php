@@ -1,5 +1,5 @@
 <?php
-    require "./conexao.php";
+    require "../conexao.php";
 
     class Usuario{
         public string $nome;
@@ -15,7 +15,7 @@
 
         public $connect;
 
-        public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento)
+        public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento): string
         {
             $this->nome = $nome;
             $this->cpf = $cpf;
@@ -28,7 +28,12 @@
             $this->numero = $numero;
             $this->complemento = $complemento;
 
-            return "O usuario <strong>{$this->nome}</strong> possui cpf <strong>{$this->cpf}</strong> com a data de nascimento <strong>{$this->dataNasc}</strong> com a senha <strong>{$this->senha}</strong> com o email <strong>{$this->email}</strong> com endereço <strong>{$this->cidade}, {$this->bairro}, {$this->rua} - {$this->numero} - {$this->complemento} - </strong> foi cadastrado com sucesso!";
+            $conn = new Conn();
+
+            $query = "INSERT INTO Usuario(nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario) VALUES ('".$this->nome."', '".$this->cpf."', '".$this->dataNasc."', '".$this->senha."', '".$this->email."', '".$this->cidade."', '".$this->bairro."', '".$this->rua."', '".$this->numero."', '".$this->complemento."')";
+            
+            $result = $conn->conectar()->prepare($query);
+            $result->execute();
         }
 
         public function listar()

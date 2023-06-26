@@ -1,9 +1,20 @@
 <?php
 
-include("../classes/usuario.php");
+require("../classes/usuario.php");
+
+$nome = $_POST['nomeCompleto'];
+$cpf = $_POST['cpf'];
+$dataNasc = $_POST['dataNascimento'];
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+$cidade = $_POST['cidade'];
+$bairro = $_POST['bairro'];
+$rua = $_POST['rua'];
+$numero = $_POST['numero'];
+$complemento = $_POST['complemento'];
 
 $usu = new Usuario();
-$result = $usu->cadastrar($_POST['nomeCompleto'],$_POST['cpf'],$_POST['dataNascimento'],$_POST['senha'],$_POST['email'],$_POST['cidade'],$_POST['bairro'],$_POST['rua'],$_POST['numero'],$_POST['complemento']);
+$result = $usu->cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento);
 
 echo $result;
 
