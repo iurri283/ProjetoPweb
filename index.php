@@ -5,18 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./imgs/bitcoin-aceito.png" type="image/x-icon">
     <title>CEFET MONEY</title>
 </head>
 <body>
-    <header>
-        <h2 class="logo">Logo</h2>
-        <nav class="navigation">
-            <a href="">Home</a>
-            <a href="">Sobre</a>
-            <a href="">Contato</a>
-            <button class="btnLogin-popup">Login</button>
-        </nav>
-    </header>
+
+    <?php
+        require('./components/header.php');
+    ?>
 
     <div class="wrapper">
         <span class="icone-fechar">

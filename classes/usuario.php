@@ -69,8 +69,8 @@
             $conn = new Conn();
             $pdo = $conn->conectar();
 
-            $query = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
-            $stmt = $pdo->prepare($query);
+            $sql = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
+            $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':cpf', $this->cpf);
             $stmt->execute();
 
@@ -94,6 +94,34 @@
                 echo "<script>alert('Usuário inválido!'); window.location.href = '../index.php';</script>";
             }
             
+        }
+
+        public function gerarConta()
+        {
+            $conn = new Conn();
+            $pdo = $conn->conectar();
+
+            $sql = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':cpf', $this->cpf);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 1) {
+                $user = $stmt->fetch();
+                
+                $id = $user["idUsuario"];
+
+                $sqlGerarConta = "INSERT INTO Conta (agConta, numeroConta, saldoConta, Usuario_Conta_idUsuario) VALUES (:agConta, :numeroConta, :saldoConta, :idUsuario)";
+                $stmtGerarConta = $pdo->prepare($sqlGerarConta);
+                $stmtGerarConta->bindParam(':agConta', $agConta);
+                $stmtGerarConta->bindParam(':numeroConta', $numeroConta);
+                $stmtGerarConta->bindParam(':saldoConta', $saldoConta);
+                $stmtGerarConta->bindParam(':idUsuario', $id);
+                $stmtGerarConta->execute();
+            } else {
+                // Autenticação falhou
+                echo "<script>alert('Usuário inválido!'); window.location.href = '../index.php';</script>";
+            }
         }
     }
 ?>
