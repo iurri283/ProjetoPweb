@@ -6,11 +6,15 @@
         public $dbname = "cefetMoney";
 
         public function conectar(){
-            try{
+            try
+            {
                 $this->connect = new PDO("mysql:host=".$this->host.";dbname=".$this->dbname, $this->user, $this->pass);
 
+                alert("Funcionou");
+
                 return $this->connect;
-            }catch(Exception $err){
+            }catch(Exception $err)
+            {
                 echo "Erro: Conexão não realizada com sucesso! Erro gerado: ".$err;
                 return false;
             }
