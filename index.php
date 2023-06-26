@@ -25,19 +25,19 @@
 
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="dados.php" method="POST">
+            <form action="./api/authLogin.php" method="POST">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="text" name="cpf" required maxlength="15" OnKeyPress="formatar('###.###.###-##',this)">
+                    <input type="text" name="cpf" required maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
                     <label>CPF</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" name="senha" required>
                     <label>Senha</label>
                 </div>
                 <div class="lembrar-esquecer">
