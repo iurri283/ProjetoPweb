@@ -41,3 +41,7 @@
     opacity: .9;
     border-top: 2px solid white;
 }
+
+.custom-row{
+    width: auto;
+}

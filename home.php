@@ -1,3 +1,26 @@
+<?php
+session_start();
+
+// Verifique se o usuário está autenticado
+if (isset($_SESSION['dadosUser'])) {
+    // Acesso aos dados do usuário
+    $user = $_SESSION['dadosUser'];
+
+    $nomeCompleto = $user['nomeUsuario'];
+    $nome = explode(" ", $nomeCompleto);
+    $primeiroNome = $nome[0];
+
+    $cpf = $user['cpfUsuario'];
+    $dataBanco = $user['nascUsuario'];
+    $dataNascimento = date("d/m/Y", strtotime($dataBanco));
+    $email = $user['emailUsuario'];
+} else {
+    // Usuário não está autenticado, redirecione para a página de login
+    header("Location: ./index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

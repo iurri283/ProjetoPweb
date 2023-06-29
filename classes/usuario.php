@@ -77,15 +77,16 @@
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch();
+                echo "<script>console.log($user)</script>";
                 
                 // Verifique a senha usando password_verify()
                 if (password_verify($this->senha, $user['senhaUsuario'])) {
                     // Autenticação bem-sucedida
                     session_start();
-                    $_SESSION['cpf'] = $user['cpfUsuario'];
+                    $_SESSION['dadosUser'] = $user;
                     // Redirecionar para página de sucesso ou página restrita
                     header("Location: ../home.php");
-                    exit();
+                    // exit();
                 } else {
                     // Senha incorreta
                     echo "<script>alert('Senha inválida!'); window.location.href = '../index.php';</script>";
