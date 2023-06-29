@@ -1,0 +1,24 @@
+:root {
+    --corTextos: #343838;
+    --corSecundaria: #005f6b;
+    --corPrimaria: #008c9e;
+    --corTerciaria: #00b4cc;
+    --corQuartenaria: #00dffc;
+}
+
+.box {
+    background-color: var(--corSecundaria);
+    color: var(--corTextos);
+    border: 1px solid var(--corTextos);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.box h2 {
+    margin-top: 0;
+    color: var(--corQuartenaria);
+}
+
+.box p {
+    margin-bottom: 10px;
+}

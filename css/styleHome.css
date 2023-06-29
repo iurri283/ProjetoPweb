@@ -14,6 +14,8 @@
 
 .sideMenu{
     background-color: var(--corPrimaria);
+    border-right: 5px solid white;
+    z-index: 99;
 }
 
 .sideMenu i, span{
@@ -41,3 +43,90 @@
     opacity: .9;
     border-top: 2px solid white;
 }
+
+.containerCards{
+    background-color: var(--corPrimaria);
+    color: white;
+}
+
+.card{
+    height: 450px;
+    background-color: white;
+    color: var(--corPrimaria);
+    border-radius: 30px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.card-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--corPrimaria);
+    color: var(--corPrimaria);
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#card-input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--corPrimaria);
+    color: var(--corPrimaria);
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.card-input:focus {
+    border-bottom: 2px solid var(--corSecundaria);
+}
+
+p strong{
+    font-size: 20px;
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--corPrimaria);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    -webkit-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
+  
+.btn-primary:hover {
+    background-color: var(--corSecundaria);
+}
+
+.card-input {
+    position: relative;
+}
+
+.card-input label {
+    position: absolute;
+    top: -1.5rem;
+    left: 0.5rem;
+    background-color: var(--corPrimaria);
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.card-input input[type="text"] {
+    padding-top: 1.5rem;
+}
+
+
+/* 
+.btn-primary{
+    -webkit-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+} */

@@ -77,15 +77,16 @@
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch();
+                echo "<script>console.log($user)</script>";
                 
                 // Verifique a senha usando password_verify()
                 if (password_verify($this->senha, $user['senhaUsuario'])) {
                     // Autenticação bem-sucedida
                     session_start();
-                    $_SESSION['cpf'] = $user['cpfUsuario'];
+                    $_SESSION['dadosUser'] = $user;
                     // Redirecionar para página de sucesso ou página restrita
                     header("Location: ../home.php");
-                    exit();
+                    // exit();
                 } else {
                     // Senha incorreta
                     echo "<script>alert('Senha inválida!'); window.location.href = '../index.php';</script>";
@@ -95,6 +96,42 @@
                 echo "<script>alert('Usuário inválido!'); window.location.href = '../index.php';</script>";
             }
             
+        }
+
+        public function editar($nome, $cpf, $dataNasc, $email, $cidade, $bairro, $rua, $numero, $complemento){
+            $this->nome = $nome;
+            $this->cpf = $cpf;
+            $this->dataNasc = $dataNasc;
+            $this->email = $email;
+            $this->cidade = $cidade;
+            $this->bairro = $bairro;
+            $this->rua = $rua;
+            $this->numero = $numero;
+            $this->complemento = $complemento;
+
+            $conn = new Conn();
+            $pdo = $conn->conectar();
+
+            // Atualizar o usuário no banco de dados
+            $sql = "UPDATE Usuario SET nomeUsuario = :nome, nascUsuario = :dataNasc, emailUsuario = :email, cidadeUsuario = :cidade, bairroUsuario = :bairro, ruaUsuario = :rua, numeroUsuario = :numero, compleUsuario = :complemento WHERE cpfUsuario = :cpf";
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':nome', $this->nome);
+            $stmt->bindParam(':cpf', $this->cpf);
+            $stmt->bindParam(':dataNasc', $this->dataNasc);
+            $stmt->bindParam(':email', $this->email);
+            $stmt->bindParam(':cidade', $this->cidade);
+            $stmt->bindParam(':bairro', $this->bairro);
+            $stmt->bindParam(':rua', $this->rua);
+            $stmt->bindParam(':numero', $this->numero);
+            $stmt->bindParam(':complemento', $this->complemento);
+
+            if ($stmt->execute()) {
+                echo "<script>alert('Usuário atualizado com sucesso!'); window.location.href = './perfil.php';</script>";
+            } else {
+                echo "<script>alert('Erro ao atualizar usuário!'); location.reload();</script>";
+            }
+
         }
 
         public function gerarConta($cpf)
