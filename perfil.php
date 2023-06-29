@@ -1,35 +1,5 @@
 <?php
-session_start();
-
-// Verifique se o usuário está autenticado
-if (isset($_SESSION['dadosUser'])) {
-    // Acesso aos dados do usuário
-    $user = $_SESSION['dadosUser'];
-
-    $nomeCompleto = $user['nomeUsuario'];
-    $nome = explode(" ", $nomeCompleto);
-    $primeiroNome = $nome[0];
-
-    $cpf = $user['cpfUsuario'];
-    $dataBanco = $user['nascUsuario'];
-    $dataNascimento = date("d/m/Y", strtotime($dataBanco));
-    $email = $user['emailUsuario'];
-
-    //--------------------------------##--Dados Lozalização--##-----------------------------------
-
-    // $estado = $use['estadoUsuario'];
-    $cidade = $user['cidadeUsuario'];
-    $bairro = $user['bairroUsuario'];
-    $rua = $user['ruaUsuario'];
-    $numero = $user['numeroUsuario'];
-    $complemento = $user['compleUsuario'];
-
-
-} else {
-    // Usuário não está autenticado, redirecione para a página de login
-    header("Location: ./index.php");
-    exit();
-}
+    require('./api/getUsuario.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +13,7 @@ if (isset($_SESSION['dadosUser'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
     <script src="./scripts/habilitaInputs.js"></script>
+    <script src="./scripts/mascaraCPF.js"></script>
     <title>Perfil</title>
 </head>
 <body>
@@ -57,10 +28,10 @@ if (isset($_SESSION['dadosUser'])) {
                         <div class="card-body text-justify">
                             <h2 class="card-title">Dados Pessoais</h2>
                             <hr>
-                            <input type="text" class="card-input" value="<?php echo $nomeCompleto ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $cpf ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $email ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $dataNascimento ?>" readonly>
+                            <strong>Nome: </strong><input type="text" class="card-input" name="nomeCompleto" value="<?php echo $nomeCompleto ?>" readonly>
+                            <strong>CPF: </strong><input type="text" id="card-input" name="cpf" value="<?php echo $cpf ?>" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" readonly>
+                            <strong>Email: </strong><input type="text" class="card-input" name="email" value="<?php echo $email ?>" readonly>
+                            <strong>Data de Nascimento: </strong><input type="text" class="card-input" name="dataNascimento" value="<?php echo $dataNascimento ?>" maxlength="10" OnKeyPress="formatar('##/##/####',this)" readonly>
                         </div>
                     </div>
                 </div>
@@ -70,11 +41,11 @@ if (isset($_SESSION['dadosUser'])) {
                             <h2 class="card-title">Dados do Endereço</h2>
                             <hr>
                             <!-- <input type="text" class="card-input" value="<?php echo $estado ?>" readonly> -->
-                            <input type="text" class="card-input" value="<?php echo $cidade ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $bairro ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $rua ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $numero ?>" readonly>
-                            <input type="text" class="card-input" value="<?php echo $complemento ?>" readonly>
+                            <strong>Cidade: </strong><input type="text" class="card-input" name="cidade" value="<?php echo $cidade ?>" readonly>
+                            <strong>Bairro: </strong><input type="text" class="card-input" name="bairro" value="<?php echo $bairro ?>" readonly>
+                            <strong>Rua: </strong><input type="text" class="card-input" name="rua" value="<?php echo $rua ?>" readonly>
+                            <strong>Número: </strong><input type="text" class="card-input" name="numero" value="<?php echo $numero ?>" readonly>
+                            <strong>Complemento: </strong><input type="text" class="card-input" name="complemento" value="<?php echo $complemento ?>" readonly>
                         </div>
                     </div>
                 </div>
