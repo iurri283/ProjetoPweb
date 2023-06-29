@@ -14,6 +14,17 @@ if (isset($_SESSION['dadosUser'])) {
     $dataBanco = $user['nascUsuario'];
     $dataNascimento = date("d/m/Y", strtotime($dataBanco));
     $email = $user['emailUsuario'];
+
+    //--------------------------------##--Dados Lozalização--##-----------------------------------
+
+    // $estado = $use['estadoUsuario'];
+    $cidade = $user['cidadeUsuario'];
+    $bairro = $user['bairroUsuario'];
+    $rua = $user['ruaUsuario'];
+    $numero = $user['numeroUsuario'];
+    $complemento = $user['compleUsuario'];
+
+
 } else {
     // Usuário não está autenticado, redirecione para a página de login
     header("Location: ./index.php");
@@ -31,42 +42,47 @@ if (isset($_SESSION['dadosUser'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
+    <script src="./scripts/habilitaInputs.js"></script>
     <title>Perfil</title>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row flex-nowrap">
+        <div class="row">
             <?php
                 require('./components/sideMenu.php');
-            ?> 
-            <div class="container">
-                <div class="row custom-row py-3 justify-content-center">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h2 class="card-title">Dados Pessoais</h2>
-                                <p class="card-text text-wrap"><strong>Nome:</strong> John Doe</p>
-                                <p class="card-text text-wrap"><strong>CPF:</strong> 123.456.789-00</p>
-                                <p class="card-text text-wrap"><strong>Email:</strong> johndoe@example.com</p>
-                                <p class="card-text text-wrap"><strong>Data de Nascimento:</strong> 01/01/1990</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h2 class="card-title">Dados do Endereço</h2>
-                                <p class="card-text text-wrap"><strong>Estado:</strong> São Paulo</p>
-                                <p class="card-text text-wrap"><strong>Cidade:</strong> São Paulo</p>
-                                <p class="card-text text-wrap"><strong>Bairro:</strong> Centro</p>
-                                <p class="card-text text-wrap"><strong>Rua:</strong> Avenida Paulista</p>
-                                <p class="card-text text-wrap"><strong>Número:</strong> 123</p>
-                                <p class="card-text text-wrap"><strong>Complemento:</strong> Apto 456</p>
-                            </div>
+            ?>
+            <form action="./api/attUsuario.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body text-justify">
+                            <h2 class="card-title">Dados Pessoais</h2>
+                            <hr>
+                            <input type="text" class="card-input" value="<?php echo $nomeCompleto ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $cpf ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $email ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $dataNascimento ?>" readonly>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body text-justify">
+                            <h2 class="card-title">Dados do Endereço</h2>
+                            <hr>
+                            <!-- <input type="text" class="card-input" value="<?php echo $estado ?>" readonly> -->
+                            <input type="text" class="card-input" value="<?php echo $cidade ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $bairro ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $rua ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $numero ?>" readonly>
+                            <input type="text" class="card-input" value="<?php echo $complemento ?>" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button>
+                    <button class="btn btn-primary" type="submit"><strong>Salvar</strong></button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
