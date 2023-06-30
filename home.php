@@ -1,24 +1,5 @@
 <?php
-session_start();
-
-// Verifique se o usuário está autenticado
-if (isset($_SESSION['dadosUser'])) {
-    // Acesso aos dados do usuário
-    $user = $_SESSION['dadosUser'];
-
-    $nomeCompleto = $user['nomeUsuario'];
-    $nome = explode(" ", $nomeCompleto);
-    $primeiroNome = $nome[0];
-
-    $cpf = $user['cpfUsuario'];
-    $dataBanco = $user['nascUsuario'];
-    $dataNascimento = date("d/m/Y", strtotime($dataBanco));
-    $email = $user['emailUsuario'];
-} else {
-    // Usuário não está autenticado, redirecione para a página de login
-    header("Location: ./index.php");
-    exit();
-}
+    require('./api/getConta.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,24 +12,28 @@ if (isset($_SESSION['dadosUser'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
-
-    <title>CEFET MONEY</title>
+    <script src="./scripts/habilitaInputs.js"></script>
+    <title>Dados da conta</title>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row flex-nowrap">
+        <div class="row">
             <?php
                 require('./components/sideMenu.php');
-            ?>    
-            <div class="col py-3">
-                <h3>Left Sidebar with Submenus</h3>
-                <p class="lead">
-                    An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single 
-                    menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on smaller screens.</p>
-                <ul class="list-unstyled">
-                    <li><h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile</li>
-                </ul>
-            </div>
+            ?>
+            <form action="#" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
+                    <div class="card" style="height: 350px;">
+                        <div class="card-body text-justify">
+                            <h2 class="card-title">Dados da Conta</h2>
+                            <hr>
+                            <strong>Agência: </strong><input type="text" class="card-input" value="<?php echo $agencia ?>" readonly>
+                            <strong>Número: </strong><input type="text" id="card-input" value="<?php echo $numeroConta ?>" readonly>
+                            <strong>Saldo: </strong><input type="text" class="card-input" value="<?php echo $saldo ?>" readonly>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>

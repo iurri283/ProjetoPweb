@@ -1,6 +1,5 @@
 <?php
-    require('./api/getUsuario.php');
-    require('./api.getConta.php');
+    require('./api/deposito.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,18 +21,19 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
-            <form action="./api/attUsuario.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+            <form action="./api/deposito.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
-                    <div class="card">
+                    <div class="card" style="height: 350px;">
                         <div class="card-body text-justify">
-                            <h2 class="card-title">Dados Pessoais</h2>
+                            <h2 class="card-title">Área de Depósito</h2>
                             <hr>
-                            <strong>Nome: </strong><input type="text" class="card-input" name="nomeCompleto" value="<?php echo $nomeCompleto ?>">
-                            <strong>CPF: </strong><input type="text" id="card-input" name="cpf" value="<?php echo $cpf ?>" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" readonly>
-                            <strong>Email: </strong><input type="text" class="card-input" name="email" value="<?php echo $email ?>">
-                            <strong>Data de Nascimento: </strong><input type="text" class="card-input" name="dataNascimento" value="<?php echo $dataNascimento ?>" maxlength="10" OnKeyPress="formatar('##/##/####',this)">
+                            <strong>Valor da trasnferência: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
                         </div>
                     </div>
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <!-- <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button> -->
+                    <button class="btn btn-primary" type="submit"><strong>Depositar</strong></button>
                 </div>
             </form>
         </div>

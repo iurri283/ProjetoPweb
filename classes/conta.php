@@ -1,57 +1,43 @@
 <?php
-    require "../conexao.php";
+    require "./conexao.php";
 
-    class Usuario{
+    class Conta{
         public string $agencia;
         public string $numero;
         public string $saldo;
+        public int $conta_idUsuario;
 
-        public function cadastrar($nome, $cpf, $dataNasc, $email, $senha, $cidade, $bairro, $rua, $numero, $complemento)
-        {
-            $this->nome = $nome;
-            $this->cpf = $cpf;
-            $this->dataNasc = $dataNasc;
-            $this->senha = $senha;
-            $this->email = $email;
-            $this->cidade = $cidade;
-            $this->bairro = $bairro;
-            $this->rua = $rua;
-            $this->numero = $numero;
-            $this->complemento = $complemento;
-            
+        public function getConta($idUsuario){
             $conn = new Conn();
             $pdo = $conn->conectar();
 
-            // Consulta para verificar se o usuário já existe
-            $sql = "SELECT * FROM Usuario WHERE cpfUsuario = :cpf";
+            $this->conta_idUsuario = $idUsuario;
+
+            $sql = "SELECT * FROM Conta WHERE Usuario_Conta_idUsuario = :idUsuario";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':cpf', $this->cpf);
+            $stmt->bindParam(':idUsuario', $this->conta_idUsuario);
             $stmt->execute();
 
-            // Verificar se o usuário já está cadastrado
-            if ($stmt->rowCount() > 0) {
-                echo "<script>alert('CPF já cadastrado!'); window.location.href = '../index.php';</script>";
-            } else {
-                // Inserir o novo usuário no banco de dados
-                $sql = "INSERT INTO Usuario (nomeUsuario, cpfUsuario, nascUsuario, senhaUsuario, emailUsuario, cidadeUsuario, bairroUsuario, ruaUsuario, numeroUsuario, compleUsuario) VALUES (:nome, :cpf, :dataNasc, :senha, :email, :cidade, :bairro, :rua, :numero, :complemento)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':nome', $this->nome);
-                $stmt->bindParam(':cpf', $this->cpf);
-                $stmt->bindParam(':dataNasc', $this->dataNasc);
-                $stmt->bindParam(':senha', $this->senha);
-                $stmt->bindParam(':email', $this->email);
-                $stmt->bindParam(':cidade', $this->cidade);
-                $stmt->bindParam(':bairro', $this->bairro);
-                $stmt->bindParam(':rua', $this->rua);
-                $stmt->bindParam(':numero', $this->numero);
-                $stmt->bindParam(':complemento', $this->complemento);
+            if ($stmt->rowCount() === 1){
+                $dadosConta = $stmt->fetch();
+                $_SESSION['dadosConta'] = $dadosConta;
+            }
+        }
 
-                if ($stmt->execute()) {
-                    $this->gerarConta($cpf);
-                    echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href = '../index.php';</script>";
-                } else {
-                    echo "<script>alert('Erro ao cadastrar usuário!'); window.location.href = '../index.php';</script>";
-                }
+        public function depositar($idUsuario){
+            $conn = new Conn();
+            $pdo = $conn->conectar();
+
+            $this->conta_idUsuario = $idUsuario;
+
+            $sql = "SELECT * FROM Conta WHERE Usuario_Conta_idUsuario = :idUsuario";//ajustar
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':idUsuario', $this->conta_idUsuario);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 1){
+                $dadosConta = $stmt->fetch();
+                $_SESSION['dadosConta'] = $dadosConta;
             }
         }
     }

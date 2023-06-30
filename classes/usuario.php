@@ -77,7 +77,7 @@
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch();
-                echo "<script>console.log($user)</script>";
+                // echo "<script>console.log($user)</script>";
                 
                 // Verifique a senha usando password_verify()
                 if (password_verify($this->senha, $user['senhaUsuario'])) {
