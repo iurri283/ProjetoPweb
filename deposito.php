@@ -1,5 +1,5 @@
 <?php
-    require('./api/getConta.php');
+    require('./api/deposito.php');
 ?>
 
 <!DOCTYPE html>
@@ -21,17 +21,19 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
-            <form action="#" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+            <form action="./api/deposito.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
                     <div class="card" style="height: 350px;">
                         <div class="card-body text-justify">
-                            <h2 class="card-title">Dados da Conta</h2>
+                            <h2 class="card-title">Área de Depósito</h2>
                             <hr>
-                            <strong>Agência: </strong><input type="text" class="card-input" value="<?php echo $agencia ?>" readonly>
-                            <strong>Número: </strong><input type="text" id="card-input" value="<?php echo $numeroConta ?>" readonly>
-                            <strong>Saldo: </strong><input type="text" class="card-input" value="<?php echo $saldo ?>" readonly>
+                            <strong>Valor da trasnferência: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
                         </div>
                     </div>
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <!-- <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button> -->
+                    <button class="btn btn-primary" type="submit"><strong>Depositar</strong></button>
                 </div>
             </form>
         </div>

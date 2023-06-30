@@ -77,7 +77,7 @@
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch();
-                echo "<script>console.log($user)</script>";
+                // echo "<script>console.log($user)</script>";
                 
                 // Verifique a senha usando password_verify()
                 if (password_verify($this->senha, $user['senhaUsuario'])) {
@@ -99,6 +99,20 @@
         }
 
         public function editar($nome, $cpf, $dataNasc, $email, $cidade, $bairro, $rua, $numero, $complemento){
+
+            session_start();
+            $_SESSION['dadosUser'] = array(
+                'nomeUsuario' => $nome,
+                'cpfUsuario' => $cpf,
+                'nascUsuario' => $dataNasc,
+                'emailUsuario' => $email,
+                'cidadeUsuario' => $cidade,
+                'bairroUsuario' => $bairro,
+                'ruaUsuario' => $rua,
+                'numeroUsuario' => $numero,
+                'compleUsuario' => $complemento
+            );
+
             $this->nome = $nome;
             $this->cpf = $cpf;
             $this->dataNasc = $dataNasc;
@@ -127,9 +141,12 @@
             $stmt->bindParam(':complemento', $this->complemento);
 
             if ($stmt->execute()) {
-                echo "<script>alert('Usuário atualizado com sucesso!'); window.location.href = './perfil.php';</script>";
+                // header('Location: ../perfil.php');
+                // echo "<script>alert('Usuário atualizado com sucesso!'); window.location.href = '../perfil.php';</script>";
+                return 200;
             } else {
-                echo "<script>alert('Erro ao atualizar usuário!'); location.reload();</script>";
+                // echo "<script>alert('Erro ao atualizar usuário!');</script>";
+                return 400;
             }
 
         }

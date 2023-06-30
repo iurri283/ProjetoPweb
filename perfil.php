@@ -28,10 +28,10 @@
                         <div class="card-body text-justify">
                             <h2 class="card-title">Dados Pessoais</h2>
                             <hr>
-                            <strong>Nome: </strong><input type="text" class="card-input" name="nomeCompleto" value="<?php echo $nomeCompleto ?>" readonly>
+                            <strong>Nome: </strong><input type="text" class="card-input" name="nomeCompleto" value="<?php echo $nomeCompleto ?>">
                             <strong>CPF: </strong><input type="text" id="card-input" name="cpf" value="<?php echo $cpf ?>" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" readonly>
-                            <strong>Email: </strong><input type="text" class="card-input" name="email" value="<?php echo $email ?>" readonly>
-                            <strong>Data de Nascimento: </strong><input type="text" class="card-input" name="dataNascimento" value="<?php echo $dataNascimento ?>" maxlength="10" OnKeyPress="formatar('##/##/####',this)" readonly>
+                            <strong>Email: </strong><input type="text" class="card-input" name="email" value="<?php echo $email ?>">
+                            <strong>Data de Nascimento: </strong><input type="text" class="card-input" name="dataNascimento" value="<?php echo $dataNascimento ?>" maxlength="10" OnKeyPress="formatar('##/##/####',this)">
                         </div>
                     </div>
                 </div>
@@ -40,17 +40,17 @@
                         <div class="card-body text-justify">
                             <h2 class="card-title">Dados do Endereço</h2>
                             <hr>
-                            <!-- <input type="text" class="card-input" value="<?php echo $estado ?>" readonly> -->
-                            <strong>Cidade: </strong><input type="text" class="card-input" name="cidade" value="<?php echo $cidade ?>" readonly>
-                            <strong>Bairro: </strong><input type="text" class="card-input" name="bairro" value="<?php echo $bairro ?>" readonly>
-                            <strong>Rua: </strong><input type="text" class="card-input" name="rua" value="<?php echo $rua ?>" readonly>
-                            <strong>Número: </strong><input type="text" class="card-input" name="numero" value="<?php echo $numero ?>" readonly>
-                            <strong>Complemento: </strong><input type="text" class="card-input" name="complemento" value="<?php echo $complemento ?>" readonly>
+                            <!-- <input type="text" class="card-input" value="<?php echo $estado ?>"> -->
+                            <strong>Cidade: </strong><input type="text" class="card-input" name="cidade" value="<?php echo $cidade ?>">
+                            <strong>Bairro: </strong><input type="text" class="card-input" name="bairro" value="<?php echo $bairro ?>">
+                            <strong>Rua: </strong><input type="text" class="card-input" name="rua" value="<?php echo $rua ?>">
+                            <strong>Número: </strong><input type="text" class="card-input" name="numero" value="<?php echo $numero ?>">
+                            <strong>Complemento: </strong><input type="text" class="card-input" name="complemento" value="<?php echo $complemento ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-3 text-center">
-                    <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button>
+                    <!-- <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button> -->
                     <button class="btn btn-primary" type="submit"><strong>Salvar</strong></button>
                 </div>
             </form>

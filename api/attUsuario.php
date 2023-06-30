@@ -13,7 +13,11 @@ $rua = $_POST['rua'];
 $numero = $_POST['numero'];
 $complemento = $_POST['complemento'];
 
-$usu = new Usuario();
-$usu->editar($nome, $cpf, $dataFormatada, $email, $cidade, $bairro, $rua, $numero, $complemento);
 
+$usu = new Usuario();
+$retorno = $usu->editar($nome, $cpf, $dataFormatada, $email, $cidade, $bairro, $rua, $numero, $complemento);
+
+if($retorno == 200){
+    echo "<script>alert('Usuário atualizado com sucesso!');window.location.href = '../perfil.php';</script>";
+}
 ?>
