@@ -5,3 +5,12 @@ function habilitarInputs() {
       inputs[i].removeAttribute('readonly');
     }
 }
+
+// function recarregarPagina() {
+//   window.location.reload();
+// }
+
+// function exibirMensagem() {
+//   alert('Os dados foram alterados.');
+//   recarregarPagina();
+// }

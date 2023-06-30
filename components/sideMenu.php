@@ -36,7 +36,7 @@
                 <span class="d-none d-sm-inline mx-1">Olá, <?php echo $primeiroNome?></span>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">Dados da conta</a></li>
+                <li><a class="dropdown-item" href="./dadosConta.php">Dados da conta</a></li>
                 <li><a class="dropdown-item" href="./perfil.php">Dados Pessoais</a></li>
                 <li>
                     <hr class="dropdown-divider">
