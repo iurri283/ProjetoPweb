@@ -14,7 +14,7 @@
                         <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Transferir</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Saque</span></a>
+                        <a href="./saque.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Saque</span></a>
                     </li>
                     <li>
                         <a href="./deposito.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Depósito</span></a>
