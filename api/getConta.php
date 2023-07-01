@@ -6,8 +6,10 @@
     $nome = explode(" ", $nomeCompleto);
     $primeiroNome = $nome[0];
 
+    $idUsuario = $user['idUsuario'];
+
     $conta = new Conta();
-    $conta->getConta($user['idUsuario']);
+    $conta->getConta($idUsuario);
 
     $dadosConta = $_SESSION['dadosConta'];
 

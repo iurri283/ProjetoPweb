@@ -1,5 +1,5 @@
 <?php
-    require('./api/getConta.php');
+    include('./api/getUsuario.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
     <script src="./scripts/habilitaInputs.js"></script>
-    <title>Dados da conta</title>
+    <script src="./scripts/mascaraCPF.js"></script>
+    <title>Transferência</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -21,17 +22,20 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
-            <form action="#" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+            <form action="./api/transferir.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
-                    <div class="card" style="height: 350px;">
+                    <div class="card" style="height: 250px;">
                         <div class="card-body text-justify">
-                            <h2 class="card-title">Dados da Conta</h2>
+                            <h2 class="card-title">Área de Transferência</h2>
                             <hr>
-                            <strong>Agência: </strong><input type="text" class="card-input" value="<?php echo $agencia ?>" readonly>
-                            <strong>Número: </strong><input type="text" id="card-input" value="<?php echo $numeroConta ?>" readonly>
-                            <strong>Saldo: </strong><input type="text" class="card-input" value="R$ <?php echo $saldo ?>" readonly>
+                            <strong>CPF: </strong><input type="text" name="valorTransferencia" placeholder="digite o CPF do usuário" class="card-input" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
+                            <strong>Valor da transferência: </strong><input type="text" name="valorSaque" placeholder="digite o valor a ser transferido" class="card-input">
                         </div>
                     </div>
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <!-- <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button> -->
+                    <button class="btn btn-primary" type="submit"><strong>Transferir</strong></button>
                 </div>
             </form>
         </div>

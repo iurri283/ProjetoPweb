@@ -1,5 +1,5 @@
 <?php
-    require('./api/deposito.php');
+    include('./api/getUsuario.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
     <script src="./scripts/habilitaInputs.js"></script>
-    <title>Dados da conta</title>
+    <title>Depositar</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -21,13 +21,13 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
-            <form action="./api/deposito.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+            <form action="./api/depositar.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
-                    <div class="card" style="height: 350px;">
+                    <div class="card" style="height: 250px;">
                         <div class="card-body text-justify">
                             <h2 class="card-title">Área de Depósito</h2>
                             <hr>
-                            <strong>Valor da trasnferência: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
+                            <strong>Valor do Depósito: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
                         </div>
                     </div>
                 </div>
