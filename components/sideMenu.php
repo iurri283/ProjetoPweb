@@ -11,7 +11,7 @@
                     <i class="bi bi-coin fs-4"></i> <span class="ms-1 d-none d-sm-inline">Conta</span> </a>
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                     <li>
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Transferir</span></a>
+                        <a href="./transferencia.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Transferir</span></a>
                     </li>
                     <li>
                         <a href="./saque.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Saque</span></a>

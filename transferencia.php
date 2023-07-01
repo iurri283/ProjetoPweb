@@ -1,5 +1,5 @@
 <?php
-    require('./api/getUsuario.php');
+    include('./api/getUsuario.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,36 +22,20 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
-            <form action="./api/attUsuario.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
+            <form action="./api/transferir.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
-                    <div class="card">
+                    <div class="card" style="height: 250px;">
                         <div class="card-body text-justify">
-                            <h2 class="card-title">Transferência</h2>
+                            <h2 class="card-title">Área de Transferência</h2>
                             <hr>
-                            <strong>Nome: </strong><input type="text" class="card-input" name="nomeCompleto" value="<?php echo $nomeCompleto ?>">
-                            <strong>CPF: </strong><input type="text" id="card-input" name="cpf" value="<?php echo $cpf ?>" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" readonly>
-                            <strong>Email: </strong><input type="text" class="card-input" name="email" value="<?php echo $email ?>">
-                            <strong>Data de Nascimento: </strong><input type="text" class="card-input" name="dataNascimento" value="<?php echo $dataNascimento ?>" maxlength="10" OnKeyPress="formatar('##/##/####',this)">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <div class="card-body text-justify">
-                            <h2 class="card-title">Dados do Endereço</h2>
-                            <hr>
-                            <!-- <input type="text" class="card-input" value="<?php echo $estado ?>"> -->
-                            <strong>Cidade: </strong><input type="text" class="card-input" name="cidade" value="<?php echo $cidade ?>">
-                            <strong>Bairro: </strong><input type="text" class="card-input" name="bairro" value="<?php echo $bairro ?>">
-                            <strong>Rua: </strong><input type="text" class="card-input" name="rua" value="<?php echo $rua ?>">
-                            <strong>Número: </strong><input type="text" class="card-input" name="numero" value="<?php echo $numero ?>">
-                            <strong>Complemento: </strong><input type="text" class="card-input" name="complemento" value="<?php echo $complemento ?>">
+                            <strong>CPF: </strong><input type="text" name="valorTransferencia" placeholder="digite o CPF do usuário" class="card-input" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
+                            <strong>Valor da transferência: </strong><input type="text" name="valorSaque" placeholder="digite o valor a ser transferido" class="card-input">
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-3 text-center">
                     <!-- <button class="btn btn-primary" type="button" onclick="habilitarInputs()"><strong>Editar</strong></button> -->
-                    <button class="btn btn-primary" type="submit"><strong>Salvar</strong></button>
+                    <button class="btn btn-primary" type="submit"><strong>Transferir</strong></button>
                 </div>
             </form>
         </div>

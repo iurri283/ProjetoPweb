@@ -57,42 +57,35 @@
             $conn = new Conn();
             $pdo = $conn->conectar();
 
+            $conta = $_SESSION['dadosConta'];
+
             $this->conta_idUsuario = $idUsuario;
-            $this->saldo = $valorSaque;
+            $this->saldo = $conta['saldoConta'];
+            
+            echo "<script>console.log('valor do saque: " . $valorSaque . " saldo: " . $this->saldo . "');</script>";
+            //VERIFICANDO SE O VALOR DO SAQUE É MAIOR QUE O SALDO
+            if($valorSaque > $this->saldo){
+                echo "<script>alert('Saldo insuficiente!'); window.location.href = '../saque.php';</script>";
+            }else{
+                $sql1 = "UPDATE conta SET saldoConta = saldoConta - :valorSaque WHERE Usuario_Conta_idUsuario = :idUsuario";
+                $stmt1 = $pdo->prepare($sql1);
+                $stmt1->bindParam(':valorSaque', $valorSaque);
+                $stmt1->bindParam(':idUsuario', $this->conta_idUsuario);
+                $stmt1->execute();
 
-            //------------PEGANDO O SALDO DA CONTA------------------------
-            $sql = "SELECT saldoConta FROM conta WHERE Usuario_Conta_idUsuario = :idUsuario";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':idUsuario', $this->conta_idUsuario);
-            $stmt->execute();
-
-            if ($stmt->rowCount() === 1){
-                $saldoConta = $stmt->fetch();
-
-                //VERIFICANDO SE O VALOR DO SAQUE É MAIOR QUE O SALDO
-                if($valorSaque > $saldoConta){
-                    echo "<script>alert('Saldo insuficiente!'); window.location.href = '../saque.php';</script>";
-                }else{
-                    $sql1 = "UPDATE conta SET saldoConta = saldoConta - :valorSaque WHERE Usuario_Conta_idUsuario = :idUsuario";
-                    $stmt1 = $pdo->prepare($sql1);
-                    $stmt1->bindParam(':valorSaque', $this->saldo);
-                    $stmt1->bindParam(':idUsuario', $this->conta_idUsuario);
-                    $stmt1->execute();
-
-                    if ($stmt1->rowCount() === 1){
-                        $sql2 = "SELECT saldoConta FROM conta WHERE Usuario_Conta_idUsuario = :idUsuario";
-                        $stmt2 = $pdo->prepare($sql2);
-                        $stmt2->bindParam(':idUsuario', $this->conta_idUsuario);
-                        $stmt2->execute();
-        
-                        echo "<script>alert('Saque realizado com sucesso!'); window.location.href = '../home.php';</script>";
-                        if ($stmt2->rowCount() === 1){
-                            $saldoConta = $stmt2->fetch();
-                            $_SESSION['dadosConta'][3] = $saldoConta;
-                        }
+                if ($stmt1->rowCount() === 1){
+                    $sql2 = "SELECT saldoConta FROM conta WHERE Usuario_Conta_idUsuario = :idUsuario";
+                    $stmt2 = $pdo->prepare($sql2);
+                    $stmt2->bindParam(':idUsuario', $this->conta_idUsuario);
+                    $stmt2->execute();
+    
+                    echo "<script>alert('Saque realizado com sucesso!'); window.location.href = '../home.php';</script>";
+                    if ($stmt2->rowCount() === 1){
+                        $saldoConta = $stmt2->fetch();
+                        $_SESSION['dadosConta'][3] = $saldoConta;
                     }
-                }               
-            }
+                }
+            }               
         }
     }
 ?>

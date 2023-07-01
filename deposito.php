@@ -27,7 +27,7 @@
                         <div class="card-body text-justify">
                             <h2 class="card-title">Área de Depósito</h2>
                             <hr>
-                            <strong>Valor da transferência: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
+                            <strong>Valor do Depósito: </strong><input type="text" name="valorDeposito" placeholder="digite o valor a ser depositado" class="card-input">
                         </div>
                     </div>
                 </div>
