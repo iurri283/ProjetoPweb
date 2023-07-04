@@ -123,6 +123,32 @@ p strong{
     padding-top: 1.5rem;
 }
 
+.saldoCantoSuperior {
+    width: auto !important;
+    position: absolute;
+    background-color: white;
+    top: 30px;
+    right: 0;
+    margin: 10px;
+    align-items: center;
+    z-index: 99;
+}
+
+.saldoCantoSuperior input {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    outline: none;
+}
+
+.saldoCantoSuperior i {
+    margin: 0 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
 
 /* 
 .btn-primary{

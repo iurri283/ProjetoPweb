@@ -8,8 +8,9 @@
     $idUsuario = $user['idUsuario'];
     $saldoConta = $conta['saldoConta'];
     $valorTransferencia = $_POST['valorTransferencia'];
+    $cpfDestino = $_POST['cpf'];
 
     $conta = new Conta();
-    $conta->trasnferir($idUsuario, $saldoConta, $valorTransferencia);
+    $conta->transferir($idUsuario, $saldoConta, $valorTransferencia, $cpfDestino);
 
 ?>
