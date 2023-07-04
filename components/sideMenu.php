@@ -21,11 +21,11 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi bi-file-earmark-pdf-fill"></i> <span class="ms-1 d-none d-sm-inline">Extrato</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <hr>
         <div class="dropdown pb-4">
@@ -38,7 +38,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
+                <li><a class="dropdown-item" href="./api/logout.php">Sair</a></li>
             </ul>
         </div>
     </div>

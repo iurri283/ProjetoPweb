@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./css/styleHome.css">
     <script src="./scripts/habilitaInputs.js"></script>
     <script src="./scripts/mascaraCPF.js"></script>
+    <script src="./scripts/mostrarEsconderSaldo.js"></script>
     <title>Transferência</title>
 </head>
 <body>
@@ -22,14 +23,20 @@
             <?php
                 require('./components/sideMenu.php');
             ?>
+            <?php
+                require('./components/saldoCantoSuperior.php');
+            ?>
             <form action="./api/transferir.php" method="POST" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
                     <div class="card" style="height: 250px;">
                         <div class="card-body text-justify">
                             <h2 class="card-title">Área de Transferência</h2>
                             <hr>
-                            <strong>CPF: </strong><input type="text" name="valorTransferencia" placeholder="digite o CPF do usuário" class="card-input" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
-                            <strong>Valor da transferência: </strong><input type="text" name="valorSaque" placeholder="digite o valor a ser transferido" class="card-input">
+                            <strong>CPF: </strong>
+                            <input type="text" name="cpf" placeholder="digite o CPF do usuário" class="card-input" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)">
+                            
+                            <strong>Valor da transferência: </strong>
+                            <input type="text" name="valorTransferencia" placeholder="digite o valor a ser transferido" id="moneyInput" class="card-input">
                         </div>
                     </div>
                 </div>

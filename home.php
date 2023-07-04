@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styleHome.css">
     <script src="./scripts/habilitaInputs.js"></script>
+    <script src="./scripts/mostrarEsconderSaldo.js"></script>
     <title>Dados da conta</title>
 </head>
 <body>
@@ -20,6 +21,9 @@
         <div class="row">
             <?php
                 require('./components/sideMenu.php');
+            ?>
+            <?php
+                require('./components/saldoCantoSuperior.php');
             ?>
             <form action="#" class="row col-md-9 col-xl-10 py-3 d-flex justify-content-center align-items-center containerCards vh-100">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 d-flex align-items-stretch">
