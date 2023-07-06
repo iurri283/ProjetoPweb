@@ -35,6 +35,7 @@
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item" href="./home.php">Dados da conta</a></li>
                 <li><a class="dropdown-item" href="./perfil.php">Dados Pessoais</a></li>
+                <li><a class="dropdown-item" href="./api/deletar.php">Excluir Conta</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
