@@ -151,6 +151,36 @@
 
         }
 
+        public function deletar($idUsuario){
+            $conn = new Conn();
+            $pdo = $conn->conectar();
+
+            // deleta a conta para posteriormente deletar usuário(não tem ON DELETE CASCADE no BD)
+            $sql = "DELETE FROM Conta WHERE Usuario_Conta_idUsuario = :idUsuario";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':idUsuario', $idUsuario);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 1) {
+                $sql1 = "DELETE FROM Usuario WHERE idUsuario = :idUsuario";
+                $stmt1 = $pdo->prepare($sql1);
+                $stmt1->bindParam(':idUsuario', $idUsuario);
+                $stmt1->execute();
+                
+                if ($stmt1->rowCount() === 1){
+                    return 200;
+                }else{
+                    echo "<script>alert('Erro ao deletar usuário!');</script>";
+                }
+                
+            } else {
+                echo "<script>alert('Erro ao deletar usuário!');</script>";
+                return 400;
+            }
+            
+        }
+
         public function gerarConta($cpf)
         {
             $this->cpf = $cpf;
